@@ -25,12 +25,13 @@
 		<spring-cloud-bom.version>Finchley.RELEASE</spring-cloud-bom.version>
 		<maven-surefire.version>2.20</maven-surefire.version>
 		<!-- [PIPELINE] -->
-		<distribution.management.release.id>artifactory-local</distribution.management.release.id>
+		<!--<distribution.management.release.id>artifactory-local</distribution.management.release.id>-->
 		<!-- [PIPELINE] -->
-		<distribution.management.snapshot.url>http://localhost:8081/artifactory/libs-snapshot-local</distribution.management.snapshot.url>
-		<distribution.management.release.url>http://localhost:8081/artifactory/libs-release-local</distribution.management.release.url>
+		<!--<distribution.management.snapshot.url>http://localhost:8081/artifactory/libs-snapshot-local</distribution.management.snapshot.url>-->
+		<!--<distribution.management.release.url>http://localhost:8081/artifactory/libs-release-local</distribution.management.release.url>-->
 		<!-- [PIPELINE] -->
-		<repo.with.binaries>http://localhost:8081/artifactory/libs-release-local</repo.with.binaries>
+		<!--<repo.with.binaries>http://localhost:8081/artifactory/libs-release-local</repo.with.binaries>-->
+		<repo.with.binaries>http://localhost:8081/repository/maven-releases/syc0pat/maven-repo/</repo.with.binaries>
 	</properties>
 
 	<dependencies>
@@ -96,19 +97,30 @@
 		</dependencies>
 	</dependencyManagement>
 
-	<!-- [PIPELINE] -->
+
+<!--	&lt;!&ndash; [PIPELINE] &ndash;&gt;-->
+<!--	<distributionManagement>-->
+<!--		<repository>-->
+<!--			<id>${distribution.management.release.id}</id>-->
+<!--			<name>Spring Milestone Repository</name>-->
+<!--			<url>${distribution.management.release.url}</url>-->
+<!--		</repository>-->
+<!--		<snapshotRepository>-->
+<!--			<id>${distribution.management.release.id}</id>-->
+<!--			<name>Spring Snapshot Repository</name>-->
+<!--			<url>${distribution.management.snapshot.url}</url>-->
+<!--		</snapshotRepository>-->
+<!--	</distributionManagement>-->
+
 	<distributionManagement>
 		<repository>
-			<id>${distribution.management.release.id}</id>
-			<name>Spring Milestone Repository</name>
-			<url>${distribution.management.release.url}</url>
+			<!--  <id>${distribution.management.release.id}</id> -->
+			<id>nexus-releases</id>
+			<!--  <url>${distribution.management.release.url}</url> -->
+			<url>http://192.168.0.102:8081/repository/maven-releases/syc0pat/maven-repo/fortune-service</url>
 		</repository>
-		<snapshotRepository>
-			<id>${distribution.management.release.id}</id>
-			<name>Spring Snapshot Repository</name>
-			<url>${distribution.management.snapshot.url}</url>
-		</snapshotRepository>
 	</distributionManagement>
+
 
 	<profiles>
 		<profile>
